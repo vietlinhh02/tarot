@@ -14,15 +14,6 @@ interface TarotReadingProps {
   onNewReading: () => void;
 }
 
-interface StarStyle {
-  width: string;
-  height: string;
-  top: string;
-  left: string;
-  animationDelay: string;
-  animationDuration: string;
-}
-
 const TarotReading = ({
   reading,
   interpretation,

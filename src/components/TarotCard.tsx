@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 interface TarotCardProps {
   card: {
@@ -21,16 +21,12 @@ interface TarotCardProps {
 }
 
 const TarotCard = ({ card, position, isReversed, isRevealed }: TarotCardProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     if (isRevealed) {
       const timer = setTimeout(() => {
-        setIsVisible(true);
+        // Xóa phần set isVisible
       }, 100);
       return () => clearTimeout(timer);
-    } else {
-      setIsVisible(false);
     }
   }, [isRevealed]);
 

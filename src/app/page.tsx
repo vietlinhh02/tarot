@@ -1,28 +1,25 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import Stars from '../components/Stars';
+import MysticElements from '../components/MysticElements';
 import TarotForm from '../components/TarotForm';
 import TarotReading from '../components/TarotReading';
-import dynamic from 'next/dynamic';
-// Import MysticElements và Stars sử dụng dynamic để tránh SSR
-const MysticElements = dynamic(() => import('../components/MysticElements'), {
-  ssr: false,
-  loading: () => <div className="mystic-elements"></div>
-});
-
-const Stars = dynamic(() => import('../components/Stars'), {
-  ssr: false,
-  loading: () => <div className="stars fixed inset-0 w-full h-full -z-10"></div>
-});
-
 import { drawCards, createReading } from '../utils/tarotUtils';
 import { generateTarotReading } from '../utils/apiService';
-import { spreadTypes } from '../data/tarotCards';
+import { spreadTypes, TarotCard } from '../data/tarotCards';
+
+// Định nghĩa type cho Reading
+interface TarotReading {
+  position: { id: string; name: string };
+  card: TarotCard;
+  isReversed: boolean;
+}
 
 export default function Home() {
   const [selectedSpread, setSelectedSpread] = useState('three_card');
   const [question, setQuestion] = useState('');
-  const [reading, setReading] = useState<any>(null);
+  const [reading, setReading] = useState<TarotReading[] | null>(null);
   const [interpretation, setInterpretation] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
