@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'xxs': '0.625rem', // 10px
+      },
       colors: {
         'mystic': {
           light: 'rgb(var(--mystic-gradient-3) / <alpha-value>)',
@@ -16,6 +19,7 @@ const config: Config = {
         },
         'accent': 'rgb(var(--accent-color) / <alpha-value>)',
         'accent-secondary': 'rgb(var(--accent-secondary) / <alpha-value>)',
+        'gold': '#d4af37',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -31,6 +35,10 @@ const config: Config = {
         'float': 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulseGlow 2s infinite ease-in-out',
         'shine': 'shine 3s ease-in-out infinite',
+        'shuffle-1': 'shuffle1 1.2s ease-in-out infinite',
+        'shuffle-2': 'shuffle2 1s ease-in-out infinite',
+        'shuffle-3': 'shuffle3 1.5s ease-in-out infinite',
+        'card-flip': 'cardFlip 0.5s ease-out forwards',
       },
       keyframes: {
         float: {
@@ -40,6 +48,27 @@ const config: Config = {
         shine: {
           '0%': { backgroundPosition: '-200% -200%' },
           '100%': { backgroundPosition: '200% 200%' },
+        },
+        shuffle1: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+          '33%': { transform: 'translate(-5%, 2%) rotate(-5deg)' },
+          '66%': { transform: 'translate(5%, -2%) rotate(5deg)' },
+          '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+        },
+        shuffle2: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+          '50%': { transform: 'translate(3%, 1%) rotate(3deg)' },
+          '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+        },
+        shuffle3: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+          '25%': { transform: 'translate(-3%, -3%) rotate(-3deg)' },
+          '75%': { transform: 'translate(3%, 3%) rotate(3deg)' },
+          '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+        },
+        cardFlip: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(180deg)' },
         },
       },
       fontFamily: {

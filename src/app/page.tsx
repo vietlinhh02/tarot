@@ -5,9 +5,9 @@ import Stars from '../components/Stars';
 import MysticElements from '../components/MysticElements';
 import TarotForm from '../components/TarotForm';
 import TarotReading from '../components/TarotReading';
-import { drawCards, createReading } from '../utils/tarotUtils';
+import { drawCards, createReading, createManualReading } from '../utils/tarotUtils';
 import { generateTarotReading } from '../utils/apiService';
-import { spreadTypes, TarotCard } from '../data/tarotCards';
+import { spreadTypes, TarotCard, tarotCards } from '../data/tarotCards';
 
 // Định nghĩa type cho Reading
 interface TarotReading {
@@ -33,7 +33,7 @@ export default function Home() {
     setQuestion(newQuestion);
   }, []);
 
-  const handleDrawCards = async () => {
+  const handleDrawCards = async (manualCardIds?: number[]) => {
     setIsLoading(true);
     setReading(null);
     setInterpretation(null);
@@ -44,11 +44,24 @@ export default function Home() {
       const spreadType = spreadTypes.find(s => s.id === selectedSpread);
       if (!spreadType) throw new Error('Kiểu trải bài không hợp lệ');
       
-      const cardCount = spreadType.positions.length;
+      let newReading;
       
-      // Rút bài và tạo trải bài
-      const cards = drawCards(cardCount);
-      const newReading = createReading(selectedSpread, cards);
+      if (manualCardIds && manualCardIds.length > 0) {
+        // Nếu có ID lá bài được chỉ định, sử dụng chúng thay vì rút ngẫu nhiên
+        const selectedCards = manualCardIds.map(id => {
+          const card = tarotCards.find(c => c.id === id);
+          if (!card) throw new Error(`Không tìm thấy lá bài với ID ${id}`);
+          return card;
+        });
+        
+        // Tạo trải bài từ các lá bài đã chọn
+        newReading = createManualReading(selectedSpread, selectedCards);
+      } else {
+        // Rút bài ngẫu nhiên như bình thường
+        const cardCount = spreadType.positions.length;
+        const cards = drawCards(cardCount);
+        newReading = createReading(selectedSpread, cards);
+      }
       
       setReading(newReading);
       
@@ -126,5 +139,4 @@ export default function Home() {
       </div>
     </main>
   );
-  
 }

@@ -25,24 +25,20 @@ export function drawCards(count: number): TarotCard[] {
 }
 
 /**
- * Tạo một trải bài với các lá bài được gán vào các vị trí
+ * Lấy các vị trí cho kiểu trải bài
  */
-export function createReading(spreadId: string, cards: TarotCard[]) {
-  let positions: { id: string; name: string }[] = [];
-  
+function getPositionsForSpread(spreadId: string): { id: string; name: string }[] {
   switch (spreadId) {
     case "one_card":
-      positions = [{ id: "single", name: "Lá bài" }];
-      break;
+      return [{ id: "single", name: "Lá bài" }];
     case "three_card":
-      positions = [
+      return [
         { id: "past", name: "Quá khứ" },
         { id: "present", name: "Hiện tại" },
         { id: "future", name: "Tương lai" }
       ];
-      break;
     case "celtic_cross":
-      positions = [
+      return [
         { id: "present", name: "Hiện tại" },
         { id: "challenge", name: "Thách thức" },
         { id: "past", name: "Quá khứ" },
@@ -54,10 +50,33 @@ export function createReading(spreadId: string, cards: TarotCard[]) {
         { id: "hopes", name: "Hy vọng và sợ hãi" },
         { id: "outcome", name: "Kết quả" }
       ];
-      break;
     default:
       throw new Error(`Kiểu trải bài không hợp lệ: ${spreadId}`);
   }
+}
+
+/**
+ * Tạo một trải bài với các lá bài được gán vào các vị trí
+ */
+export function createReading(spreadId: string, cards: TarotCard[]) {
+  const positions = getPositionsForSpread(spreadId);
+  
+  if (cards.length !== positions.length) {
+    throw new Error(`Số lượng lá bài (${cards.length}) không khớp với số lượng vị trí (${positions.length})`);
+  }
+  
+  return positions.map((position, index) => ({
+    position,
+    card: cards[index],
+    isReversed: Math.random() > 0.5 // 50% cơ hội lá bài bị ngược
+  }));
+}
+
+/**
+ * Tạo một trải bài với các lá bài được chọn thủ công
+ */
+export function createManualReading(spreadId: string, cards: TarotCard[]) {
+  const positions = getPositionsForSpread(spreadId);
   
   if (cards.length !== positions.length) {
     throw new Error(`Số lượng lá bài (${cards.length}) không khớp với số lượng vị trí (${positions.length})`);
