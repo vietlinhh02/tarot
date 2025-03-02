@@ -1,0 +1,37 @@
+<svg width="300" height="500" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Nền lá bài -->
+  <rect width="300" height="500" rx="15" fill="#F5F5DC" />
+  
+  <!-- Viền trang trí -->
+  <rect x="10" y="10" width="280" height="480" rx="10" fill="none" stroke="#8B4513" stroke-width="3" />
+  
+  <!-- Tên lá bài -->
+  <text x="150" y="40" font-family="serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#8B4513">THE FOOL</text>
+  <text x="150" y="65" font-family="serif" font-size="16" text-anchor="middle" fill="#8B4513">0</text>
+  
+  <!-- Hình minh họa đơn giản -->
+  <g transform="translate(150, 250) scale(0.8)">
+    <!-- Người -->
+    <circle cx="0" cy="-80" r="30" fill="#FFD700" /> <!-- Đầu -->
+    <rect x="-15" y="-50" width="30" height="60" fill="#FF6347" /> <!-- Thân -->
+    <line x1="0" y1="10" x2="-20" y2="60" stroke="#000" stroke-width="3" /> <!-- Chân trái -->
+    <line x1="0" y1="10" x2="20" y2="60" stroke="#000" stroke-width="3" /> <!-- Chân phải -->
+    <line x1="-15" y1="-30" x2="-50" y2="-10" stroke="#000" stroke-width="3" /> <!-- Tay trái -->
+    <line x1="15" y1="-30" x2="50" y2="-50" stroke="#000" stroke-width="3" /> <!-- Tay phải -->
+    
+    <!-- Túi hành lý -->
+    <rect x="30" y="-60" width="20" height="30" fill="#8B4513" />
+    <line x1="40" y1="-60" x2="40" y2="-70" stroke="#8B4513" stroke-width="2" />
+    
+    <!-- Vách đá -->
+    <path d="M-100,60 L100,60 L100,100 L-100,100 Z" fill="#A9A9A9" />
+    
+    <!-- Mặt trời -->
+    <circle cx="-60" cy="-80" r="20" fill="#FFD700" />
+    <path d="M-60,-110 L-60,-100 M-60,-60 L-60,-50 M-90,-80 L-80,-80 M-40,-80 L-30,-80 M-80,-100 L-75,-95 M-45,-65 L-40,-60 M-80,-60 L-75,-65 M-45,-95 L-40,-100" stroke="#FFD700" stroke-width="2" />
+  </g>
+  
+  <!-- Ý nghĩa -->
+  <text x="150" y="430" font-family="serif" font-size="14" text-anchor="middle" fill="#8B4513">Khởi đầu mới, mạo hiểm, tự do</text>
+  <text x="150" y="450" font-family="serif" font-size="14" text-anchor="middle" fill="#8B4513">tinh thần tự phát, ngây thơ</text>
+</svg> 

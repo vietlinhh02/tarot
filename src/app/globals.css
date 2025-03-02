@@ -1,0 +1,895 @@
+/* Import font đẹp */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --foreground-rgb: 30, 30, 46;
+  --background-start-rgb: 20, 10, 40;
+  --background-end-rgb: 60, 30, 90;
+  --primary-color: 138, 43, 226;
+  --primary-light: 180, 120, 255;
+  --primary-dark: 75, 0, 130;
+  --accent-color: 255, 215, 0;
+  --accent-secondary: 252, 128, 25;
+  --card-bg: 245, 240, 255;
+  --text-light: 240, 240, 255;
+  --mystic-gradient-1: 75, 0, 130;
+  --mystic-gradient-2: 138, 43, 226;
+  --mystic-gradient-3: 180, 120, 255;
+  --input-bg: 255, 255, 255;
+  --input-border: 180, 120, 255;
+  --input-focus: 255, 215, 0; 
+}
+
+body {
+  color: rgb(var(--text-light));
+  background: linear-gradient(
+      135deg,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    )
+    fixed;
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  min-height: 100vh;
+  font-family: 'Lora', 'Crimson Pro', 'Times New Roman', serif;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: -1;
+}
+
+/* Tạo hiệu ứng sao lấp lánh trên nền */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Hiệu ứng lật bài */
+.backface-visibility-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Tùy chỉnh cho các thành phần Tarot */
+.tarot-card-shadow {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hiệu ứng hover cho các lá bài */
+.tarot-card-hover {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.5s ease;
+}
+
+.tarot-card-hover:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(var(--primary-color), 0.2), 
+              0 5px 15px rgba(var(--primary-color), 0.1),
+              0 0 20px rgba(var(--accent-color), 0.1);
+}
+
+/* Hiệu ứng cho nút */
+.button-glow {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.button-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgb(var(--primary-light)), 
+    rgb(var(--accent-color)),
+    rgb(var(--primary-dark)),
+    rgb(var(--accent-secondary))
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: glowing 3s ease-in-out infinite;
+  border-radius: 0.6rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-glow:hover::before {
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Nút chính */
+.btn-primary {
+  background-color: rgba(var(--primary-color), 0.9); 
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 15px rgba(var(--primary-color), 0.3), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(var(--primary-light), 0.3);
+}
+
+.btn-primary:hover {
+  background-color: rgba(var(--primary-dark), 0.95);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(var(--primary-color), 0.4), 
+              0 0 10px rgba(var(--accent-color), 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--primary-light), 0.5), 
+              0 5px 15px rgba(var(--primary-color), 0.3);
+}
+
+.btn-primary:disabled {
+  background-color: rgba(var(--primary-light), 0.5);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  border: 1px solid rgba(var(--primary-light), 0.2);
+  opacity: 0.7;
+}
+
+/* Nút thứ cấp */
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(var(--text-light));
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  padding: 0.625rem 1.25rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 
+              0 0 10px rgba(var(--accent-color), 0.1),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2), 
+              0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card container */
+.card-container {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 
+              0 1px 3px rgba(0, 0, 0, 0.1),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  padding: 1.75rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgb(var(--text-light));
+  overflow: hidden;
+  position: relative;
+}
+
+.card-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, 
+    rgba(var(--primary-color), 0.7), 
+    rgba(var(--accent-color), 0.7), 
+    rgba(var(--primary-light), 0.7)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-container:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+              0 15px 20px rgba(0, 0, 0, 0.2),
+              0 0 15px rgba(var(--primary-color), 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-container:hover::before {
+  opacity: 1;
+}
+
+/* Tiêu đề */
+.title-gradient {
+  background-image: linear-gradient(to right, 
+    rgb(var(--mystic-gradient-1)), 
+    rgb(var(--mystic-gradient-2)), 
+    rgb(var(--mystic-gradient-3)), 
+    rgb(var(--accent-color))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 5px 15px rgba(var(--accent-color), 0.3);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.title-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, 
+    rgb(var(--mystic-gradient-1)), 
+    rgb(var(--mystic-gradient-3))
+  );
+  border-radius: 3px;
+}
+
+/* Hiệu ứng ánh sáng cho lá bài */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(30deg);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+  transform: rotate(30deg) translate(10%, 10%);
+}
+
+/* Hiệu ứng lật bài */
+.flip-card {
+  perspective: 1500px;
+}
+
+.flip-card-inner {
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-card-front, .flip-card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 
+              0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, 
+    rgba(var(--primary-dark), 0.9), 
+    rgba(var(--background-start-rgb), 0.9)
+  );
+  border: 1px solid rgba(var(--primary-light), 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, 
+    rgba(var(--card-bg), 0.95), 
+    rgba(255, 255, 255, 0.9)
+  );
+  border: 1px solid rgba(var(--primary-light), 0.3);
+  color: rgb(var(--foreground-rgb));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Hiệu ứng loading */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  border: 4px solid rgba(var(--primary-light), 0.1);
+}
+
+.loading-spinner::before, 
+.loading-spinner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.loading-spinner::before {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-top-color: rgb(var(--primary-color));
+  border-bottom-color: rgb(var(--accent-color));
+  animation: spin 1.5s linear infinite;
+}
+
+.loading-spinner::after {
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 2px solid transparent;
+  border-left-color: rgb(var(--primary-light));
+  border-right-color: rgb(var(--accent-secondary));
+  animation: spin 1s ease-in-out infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hiệu ứng cho văn bản */
+.text-mystic {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  text-shadow: 0 0 20px rgba(var(--accent-color), 0.3);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.text-mystic::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 3px;
+  background: linear-gradient(to bottom, 
+    rgb(var(--primary-light)), 
+    rgb(var(--accent-color))
+  );
+  border-radius: 3px;
+}
+
+/* Hiệu ứng cho các phần tử xuất hiện */
+.fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hiệu ứng cho các ngôi sao */
+.star {
+  position: absolute;
+  background-color: rgb(var(--accent-color));
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0;
+  animation: twinkle 5s infinite;
+  box-shadow: 0 0 10px rgba(var(--accent-color), 0.8),
+              0 0 20px rgba(var(--accent-color), 0.4);
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Trang trí bổ sung */
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--primary-light), 0),
+    rgba(var(--primary-light), 0.5),
+    rgba(var(--accent-color), 0.5),
+    rgba(var(--primary-light), 0)
+  );
+  margin: 2rem 0;
+}
+
+.corner-decoration {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0;
+  opacity: 0.6;
+}
+
+.corner-decoration.top-left {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(45deg, rgb(var(--accent-color)), transparent) 1;
+}
+
+.corner-decoration.top-right {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+  border-image: linear-gradient(-45deg, rgb(var(--accent-color)), transparent) 1;
+}
+
+.corner-decoration.bottom-left {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+  border-image: linear-gradient(135deg, rgb(var(--accent-color)), transparent) 1;
+}
+
+.corner-decoration.bottom-right {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+  border-image: linear-gradient(-135deg, rgb(var(--accent-color)), transparent) 1;
+}
+
+/* Glass morphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mystic-box {
+  background: linear-gradient(145deg, 
+    rgba(var(--background-start-rgb), 0.8), 
+    rgba(var(--background-end-rgb), 0.8)
+  );
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1),
+              0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.mystic-box::before {
+  content: '';
+  position: absolute;
+  height: 200%;
+  width: 150%;
+  top: -50%;
+  left: -25%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  animation: shine 5s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Các tiện ích bổ sung */
+.shadow-text {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary-light), 0.5);
+  border-radius: 10px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--primary-color), 0.7);
+}
+
+/* Inputs và Textarea mystical */
+input, textarea, select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background-color: rgba(var(--input-bg), 0.05);
+  border: 1px solid rgba(var(--input-border), 0.3);
+  border-radius: 0.75rem;
+  color: rgb(var(--text-light));
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 
+              inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: rgba(var(--input-focus), 0.5);
+  box-shadow: 0 0 0 3px rgba(var(--input-focus), 0.2),
+              0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: rgba(var(--input-bg), 0.1);
+}
+
+input::placeholder, textarea::placeholder, select::placeholder {
+  color: rgba(var(--text-light), 0.6);
+  font-style: italic;
+}
+
+textarea {
+  min-height: 120px;
+  line-height: 1.6;
+  resize: vertical;
+  background-image: 
+    linear-gradient(rgba(var(--input-border), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--input-border), 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+  transition: all 0.3s ease;
+}
+
+textarea:focus {
+  background-image: none;
+}
+
+/* Hiệu ứng typing cho textarea */
+textarea:focus::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.mystic-textarea {
+  background-color: rgba(20, 10, 40, 0.3);
+  border: 1px solid rgba(var(--primary-light), 0.3);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  color: rgba(var(--text-light), 0.9);
+  transition: all 0.4s ease;
+  line-height: 1.6;
+  height: auto;
+  resize: vertical;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1),
+              inset 0 1px 2px rgba(var(--primary-light), 0.1);
+  backdrop-filter: blur(5px);
+  background-image: radial-gradient(
+    rgba(var(--primary-light), 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+.mystic-textarea:focus {
+  outline: none;
+  background-color: rgba(30, 15, 60, 0.5);
+  border-color: rgba(var(--accent-color), 0.5);
+  box-shadow: 0 0 0 2px rgba(var(--accent-color), 0.2),
+              0 8px 20px rgba(0, 0, 0, 0.2);
+  background-image: none;
+}
+
+.mystic-textarea::placeholder {
+  color: rgba(var(--text-light), 0.5);
+  font-style: italic;
+}
+
+.input-wrapper {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.input-wrapper:hover {
+  transform: translateY(-2px);
+}
+
+.input-decoration {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.input-decoration.top-left {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid rgba(var(--accent-color), 0.7);
+  border-left: 2px solid rgba(var(--accent-color), 0.7);
+}
+
+.input-decoration.top-right {
+  top: 8px;
+  right: 8px;
+  border-top: 2px solid rgba(var(--accent-color), 0.7);
+  border-right: 2px solid rgba(var(--accent-color), 0.7);
+}
+
+.input-decoration.bottom-left {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 2px solid rgba(var(--accent-color), 0.7);
+  border-left: 2px solid rgba(var(--accent-color), 0.7);
+}
+
+.input-decoration.bottom-right {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid rgba(var(--accent-color), 0.7);
+  border-right: 2px solid rgba(var(--accent-color), 0.7);
+}
+
+.input-wrapper:focus-within .input-decoration {
+  width: 18px;
+  height: 18px;
+  opacity: 1;
+}
+
+/* SVG Tarot Card Effects */
+.tarot-card-svg {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.flip-card:hover .tarot-card-svg {
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.35));
+}
+
+/* Glow effect for SVG elements */
+.svg-glow {
+  filter: drop-shadow(0 0 5px rgba(var(--accent-color), 0.7));
+}
+
+/* Pulse glow effect for question mark */
+.pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(var(--accent-color), 0.5);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(var(--accent-color), 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(var(--accent-color), 0.7);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(var(--accent-color), 0.3);
+    transform: scale(1);
+  }
+}
+
+/* Enhanced flip effect */
+.flip-card-inner {
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.flipped .flip-card-inner {
+  transform: rotateY(180deg) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* SVG text enhancements */
+.svg-title-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.svg-description-text {
+  font-family: 'Lora', serif;
+  letter-spacing: 0.05em;
+}
+
+/* Shine effect for SVG cards */
+.shine-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 200%;
+  animation: shineEffect 3s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes shineEffect {
+  0% {
+    background-position: -200% -200%;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
+} 

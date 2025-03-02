@@ -1,0 +1,23 @@
+<svg width="300" height="500" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Nền lá bài -->
+  <rect width="300" height="500" rx="15" fill="#4B0082" />
+  
+  <!-- Viền trang trí -->
+  <rect x="10" y="10" width="280" height="480" rx="10" fill="none" stroke="#FFD700" stroke-width="2" />
+  
+  <!-- Hoa văn trang trí -->
+  <circle cx="150" cy="250" r="100" fill="none" stroke="#FFD700" stroke-width="3" />
+  <circle cx="150" cy="250" r="80" fill="none" stroke="#FFD700" stroke-width="2" />
+  <circle cx="150" cy="250" r="60" fill="none" stroke="#FFD700" stroke-width="1.5" />
+  
+  <!-- Ngôi sao -->
+  <path d="M150 150 L160 180 L190 180 L165 200 L175 230 L150 210 L125 230 L135 200 L110 180 L140 180 Z" fill="#FFD700" />
+  <path d="M150 270 L160 300 L190 300 L165 320 L175 350 L150 330 L125 350 L135 320 L110 300 L140 300 Z" fill="#FFD700" />
+  
+  <!-- Mặt trăng -->
+  <path d="M150 50 A20 20 0 0 1 170 70 A20 20 0 0 1 150 90 A20 20 0 0 1 130 70 A20 20 0 0 1 150 50 Z" fill="#FFD700" />
+  
+  <!-- Mặt trời -->
+  <path d="M150 410 A20 20 0 0 1 170 430 A20 20 0 0 1 150 450 A20 20 0 0 1 130 430 A20 20 0 0 1 150 410 Z" fill="#FFD700" />
+  <path d="M150 390 L150 370 M150 490 L150 470 M110 430 L90 430 M210 430 L190 430 M122 402 L108 388 M178 458 L192 472 M122 458 L108 472 M178 402 L192 388" stroke="#FFD700" stroke-width="2" />
+</svg> 
