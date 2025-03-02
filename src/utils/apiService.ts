@@ -100,7 +100,7 @@ function mockTarotReading(
   reading += `---\n\n`;
 
   // Diễn giải từng lá bài
-  cards.forEach((item, index) => {
+  cards.forEach((item) => {
     const cardState = item.isReversed ? "ngược" : "xuôi";
     reading += `**${item.position.name} - ${item.card.name} (${cardState}):**\n\n`;
     

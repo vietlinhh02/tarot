@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { tarotCards } from '../data/tarotCards';
 
 interface TarotSelectorProps {
@@ -126,10 +125,10 @@ const TarotSelector = ({ selectedCards, onSelectCard, maxSelections }: TarotSele
     return (
       <div className="flex flex-col items-center justify-center py-12">
         <div className="relative w-40 h-60 mb-8 bg-purple-900 rounded-lg shadow-lg border-2 border-purple-700">
-          <img 
-            src={cardBackImagePath} 
-            alt="Tarot Back" 
-            className="absolute inset-0 w-full h-full object-cover opacity-90 animate-shuffle-1" 
+          <div 
+            style={{ backgroundImage: `url(${cardBackImagePath})` }}
+            className="absolute inset-0 w-full h-full object-cover opacity-90 animate-shuffle-1 bg-center bg-cover" 
+            aria-label="Tarot Back"
           />
         </div>
         <p className="text-xl text-center animate-pulse">Đang xáo bài...</p>
@@ -173,7 +172,7 @@ const TarotSelector = ({ selectedCards, onSelectCard, maxSelections }: TarotSele
       
       {/* Hiển thị tất cả các lá bài */}
       <div className="flex flex-wrap justify-center gap-3 pb-8 relative min-h-[300px]">
-        {shuffledCards.map((card, index) => {
+        {shuffledCards.map((card) => {
           const isSelected = selectedCards.includes(card.id);
           const randomPosition = randomPositionsRef.current[card.id] || { rotate: 0, offsetX: 0, offsetY: 0 };
           
@@ -196,10 +195,10 @@ const TarotSelector = ({ selectedCards, onSelectCard, maxSelections }: TarotSele
             >
               {/* Hiển thị ảnh lá bài */}
               <div className="relative w-full h-full bg-purple-900">
-                <img 
-                  src={cardBackImagePath} 
-                  alt={`Card ${card.id}`} 
-                  className="absolute inset-0 w-full h-full object-cover" 
+                <div 
+                  style={{ backgroundImage: `url(${cardBackImagePath})` }}
+                  className="absolute inset-0 w-full h-full object-cover bg-center bg-cover"
+                  aria-label={`Card ${card.id}`}  
                 />
                 
                 {/* Hiệu ứng overlay khi chọn lá bài */}
